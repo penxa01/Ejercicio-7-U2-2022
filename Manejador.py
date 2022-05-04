@@ -29,17 +29,20 @@ class Manejador:
             print("".center(20,"-"))
     
     def Buscar(self,NroViaj):
-        i = 0
 
-        while((self.__ListaViajeros[i].GetNumViaj() != NroViaj) and (i< len(self.__ListaViajeros))):
-            i += 1
-        ViajeroEncontrado= self.__ListaViajeros[i]
-        if(ViajeroEncontrado.GetNumViaj() == NroViaj):
-            print("VIAJERO ENCONTRADO")
-            print(ViajeroEncontrado)
+        i = 0
+        bandera = False
+        while (i < len(self.__ListaViajeros)) and (bandera == False):
+            if self.__ListaViajeros[i].GetNumViaj() == NroViaj:
+                bandera = True
+                ViajeroEncontrado=self.__ListaViajeros[i]
+            i+=1
+        if bandera:
+            print("Viajero encontrado con exito")
+            print (ViajeroEncontrado)
+            return ViajeroEncontrado
         else:
-            print("VIAJERO INEXISTENTE")
-        return ViajeroEncontrado
+            print("Viajero no encontrado")
         
     def MillasMaximas(self):
         viajeroMaximo = self.__ListaViajeros[0]
